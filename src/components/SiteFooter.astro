@@ -1,0 +1,24 @@
+---
+import site from "../data/site.json";
+import Wordmark from "./Wordmark.astro";
+---
+
+<footer class="bg-onyx text-on-onyx-2">
+  <div class="mx-auto max-w-[1180px] px-6">
+    <div class="flex flex-wrap items-center justify-between gap-6 py-10">
+      <Wordmark class="text-[21px] text-on-onyx" />
+      <nav class="flex flex-wrap gap-[26px] text-[14px] font-medium">
+        {
+          site.footerLinks.map((l) => (
+            <a href={l.href} class="transition-colors hover:text-on-onyx">
+              {l.label}
+            </a>
+          ))
+        }
+      </nav>
+      <small class="text-[13px] text-on-onyx-muted"
+        >© {site.copyrightYear} {site.name} · mytechbytes.in</small
+      >
+    </div>
+  </div>
+</footer>

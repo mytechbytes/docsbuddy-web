@@ -1,0 +1,14 @@
+---
+interface Props {
+  n: string;
+  title: string;
+  body: string;
+}
+const { n, title, body } = Astro.props;
+---
+
+<div class="rounded-2xl border border-line bg-bg p-[30px]" data-reveal>
+  <div class="text-[13px] font-extrabold tracking-[.04em] tabular-nums text-teal">{n}</div>
+  <h3 class="mb-1.5 mt-2 text-[19px] font-bold text-ink">{title}</h3>
+  <p class="text-[15px] text-ink-2">{body}</p>
+</div>

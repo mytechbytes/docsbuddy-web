@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DocsBuddy — Never miss a renewal again</title>
+<meta name="description" content="DocsBuddy tracks your vehicles, appliances, electronics and documents — and reminds your whole family about insurance, AMC, pollution, warranty and tax dates weeks ahead." />
+<meta name="theme-color" content="#0D1A2B" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230D1A2B'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='18' font-weight='800' fill='white' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#F4F6FA; --paper:#FFFFFF; --ink:#0D1A2B; --ink-2:#324159; --muted:#6B7891;
+    --line:#E7EBF2; --navy:#1F3A5F; --teal:#2A7F9E; --blue:#2476E8;
+    --green:#1EA765; --red:#D24B54; --amber:#D8901A;
+    --grad:linear-gradient(135deg,#1F3A5F 0%,#2A7F9E 100%);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;line-height:1.55;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+
+  /* header */
+  header{position:sticky;top:0;z-index:50;background:rgba(244,246,250,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px;}
+  .wordmark{font-size:21px;font-weight:800;letter-spacing:-.01em;}
+  .wordmark span{color:var(--muted);}
+  .nav-links{display:flex;align-items:center;gap:28px;font-size:14.5px;font-weight:600;color:var(--ink-2);}
+  .nav-links a:hover{color:var(--teal);}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;border-radius:12px;cursor:pointer;border:none;font-family:inherit;}
+  .btn-dark{background:var(--ink);color:#fff;padding:11px 20px;font-size:14.5px;}
+  .btn-dark:hover{background:#16273c;}
+  .btn-ghost{background:transparent;color:var(--ink);padding:11px 20px;font-size:15px;border:1.5px solid var(--line);}
+  .btn-ghost:hover{border-color:var(--ink-2);}
+  .nav .btn-dark{padding:10px 18px;}
+  @media(max-width:760px){.nav-links a:not(.btn){display:none;}}
+
+  /* store badges */
+  .badge{display:inline-flex;align-items:center;gap:11px;background:var(--ink);color:#fff;padding:12px 20px;border-radius:13px;cursor:pointer;}
+  .badge:hover{background:#16273c;}
+  .badge small{display:block;font-size:10px;font-weight:500;opacity:.8;line-height:1.1;}
+  .badge b{display:block;font-size:17px;font-weight:700;line-height:1.15;}
+  .badge.light{background:#fff;color:var(--ink);}
+  .badge.light small{opacity:.65;}
+
+  /* hero */
+  .hero{background:var(--bg);overflow:hidden;position:relative;}
+  .hero-inner{display:flex;align-items:center;gap:32px;padding:72px 0 80px;position:relative;}
+  .hero-copy{flex:0 0 470px;position:relative;z-index:3;}
+  .eyebrow{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:18px;}
+  h1{font-size:60px;line-height:1.03;font-weight:800;letter-spacing:-.03em;margin:0;}
+  .lede{font-size:19px;line-height:1.55;color:var(--ink-2);margin:22px 0 0;max-width:440px;}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px;}
+  .rating{display:flex;align-items:center;gap:8px;margin-top:22px;font-size:13.5px;color:var(--muted);font-weight:500;}
+  .stars{color:var(--amber);letter-spacing:1px;}
+  .hero-art{flex:1;position:relative;height:600px;}
+  .glow{position:absolute;border-radius:50%;pointer-events:none;}
+  .hero-art .g1{right:90px;top:0;width:540px;height:540px;background:radial-gradient(closest-side,rgba(76,168,195,.30),transparent 70%);}
+  .hero-art .g2{right:320px;bottom:-30px;width:340px;height:340px;background:radial-gradient(closest-side,rgba(210,75,84,.13),transparent 70%);}
+  .phone{position:absolute;filter:drop-shadow(0 30px 52px rgba(13,26,43,.24));}
+  .hero-art .p-back{left:80px;top:55px;width:268px;transform:rotate(-5deg);}
+  .hero-art .p-front{left:290px;top:14px;width:290px;transform:rotate(4deg);}
+  @media(max-width:980px){
+    .hero-inner{flex-direction:column;align-items:flex-start;padding:52px 0 60px;}
+    .hero-copy{flex:none;width:100%;}
+    h1{font-size:44px;}
+    .hero-art{width:100%;height:480px;margin-top:8px;}
+    .hero-art .p-back{left:8%;}.hero-art .p-front{left:40%;}
+  }
+  @media(max-width:520px){
+    h1{font-size:36px;}
+    .hero-art{height:420px;}
+    .hero-art .p-back{width:210px;left:2%;}.hero-art .p-front{width:228px;left:38%;}
+    .hero-art .g1{width:360px;height:360px;right:0;}
+  }
+
+  /* sections */
+  section{padding:96px 0;}
+  .sec-head{text-align:center;max-width:680px;margin:0 auto 48px;}
+  .sec-head h2{font-size:40px;line-height:1.1;font-weight:800;letter-spacing:-.025em;margin:0;}
+  .sec-head p{font-size:18px;color:var(--ink-2);margin:16px 0 0;}
+
+  /* value props */
+  .props{background:var(--bg);}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  @media(max-width:760px){.grid{grid-template-columns:1fr;}}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:30px;box-shadow:0 1px 2px rgba(13,26,43,.04);}
+  .card .ico{width:48px;height:48px;border-radius:13px;display:grid;place-items:center;margin-bottom:18px;background:rgba(42,127,158,.10);color:var(--teal);}
+  .card.c2 .ico{background:rgba(30,167,101,.12);color:var(--green);}
+  .card.c3 .ico{background:rgba(36,118,232,.10);color:var(--blue);}
+  .card.c4 .ico{background:rgba(31,58,95,.10);color:var(--navy);}
+  .card h3{font-size:20px;font-weight:700;letter-spacing:-.01em;margin:0 0 8px;}
+  .card p{font-size:15.5px;color:var(--ink-2);margin:0;}
+
+  /* feature sections */
+  .feature{padding:92px 0;}
+  .feature.alt{background:var(--bg);}
+  .feature.dark{background:var(--ink);color:#fff;}
+  .feature .row{display:flex;align-items:center;gap:56px;}
+  .feature.flip .row{flex-direction:row-reverse;}
+  .feature .copy{flex:0 0 430px;}
+  .feature .copy h2{font-size:38px;line-height:1.1;font-weight:800;letter-spacing:-.025em;margin:0;}
+  .feature.dark .copy h2{color:#fff;}
+  .feature .copy .lede2{font-size:17.5px;line-height:1.55;color:var(--ink-2);margin:18px 0 0;max-width:430px;}
+  .feature.dark .copy .lede2{color:rgba(255,255,255,.72);}
+  .flist{display:flex;flex-direction:column;gap:12px;margin-top:24px;}
+  .flist .li{display:flex;align-items:center;gap:12px;font-size:15.5px;font-weight:600;color:var(--ink-2);}
+  .feature.dark .flist .li{color:rgba(255,255,255,.84);}
+  .ck{width:23px;height:23px;border-radius:50%;background:rgba(42,127,158,.12);color:var(--teal);display:grid;place-items:center;font-size:12px;font-weight:700;flex:none;}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
+  .chip{font-size:13.5px;font-weight:600;color:var(--ink-2);background:var(--paper);border:1px solid var(--line);padding:8px 14px;border-radius:999px;}
+  .fstats{display:flex;gap:22px;margin-top:26px;}
+  .fstats .v{font-size:32px;font-weight:800;letter-spacing:-.02em;color:#fff;}
+  .fstats .k{font-size:13px;color:rgba(255,255,255,.6);font-weight:500;}
+  .fstats .sep{width:1px;background:rgba(255,255,255,.16);}
+  .feature .art{flex:1;position:relative;height:540px;min-width:0;}
+  .feature .ph{position:absolute;filter:drop-shadow(0 28px 50px rgba(13,26,43,.22));}
+  .feature.dark .ph{filter:drop-shadow(0 30px 54px rgba(0,0,0,.42));}
+  .art .a-glow{position:absolute;width:420px;height:420px;top:40px;left:50%;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(76,168,195,.26),transparent 70%);border-radius:50%;}
+  .art.coral .a-glow{background:radial-gradient(closest-side,rgba(210,75,84,.14),transparent 70%);}
+  .art.duo .ph-back{left:16%;top:48px;width:248px;transform:rotate(-5deg);}
+  .art.duo .ph-front{left:40%;top:8px;width:278px;transform:rotate(4deg);}
+  .art.solo .ph-one{left:50%;top:0;transform:translateX(-50%) rotate(-2deg);width:292px;}
+  @media(max-width:980px){
+    .feature .row,.feature.flip .row{flex-direction:column;align-items:flex-start;}
+    .feature .copy{flex:none;width:100%;}
+    .feature .copy h2{font-size:32px;}
+    .feature .art{width:100%;height:480px;margin-top:8px;}
+  }
+  @media(max-width:520px){
+    .feature .art{height:430px;}
+    .art.duo .ph-back{width:200px;left:4%;}
+    .art.duo .ph-front{width:222px;left:40%;}
+    .art.solo .ph-one{width:240px;}
+    .art .a-glow{width:320px;height:320px;}
+    .fstats .v{font-size:26px;}
+  }
+
+  /* how it works */
+  .how{background:var(--paper);}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media(max-width:760px){.steps{grid-template-columns:1fr;}}
+  .step{position:relative;padding:30px;border:1px solid var(--line);border-radius:16px;background:var(--bg);}
+  .step .n{font-size:13px;font-weight:800;letter-spacing:.04em;color:var(--teal);font-variant-numeric:tabular-nums;}
+  .step h3{font-size:19px;font-weight:700;margin:8px 0 6px;}
+  .step p{font-size:15px;color:var(--ink-2);margin:0;}
+
+  /* download band */
+  .download{background:var(--paper);padding:40px 0 100px;}
+  .band{position:relative;overflow:hidden;border-radius:28px;background:var(--grad);color:#fff;padding:64px 48px;text-align:center;}
+  .band .gb1{position:absolute;right:-50px;top:-60px;width:280px;height:280px;background:radial-gradient(closest-side,rgba(255,255,255,.16),transparent 70%);border-radius:50%;}
+  .band .gb2{position:absolute;left:-50px;bottom:-70px;width:230px;height:230px;background:radial-gradient(closest-side,rgba(255,255,255,.10),transparent 70%);border-radius:50%;}
+  .band h2{font-size:44px;font-weight:800;letter-spacing:-.03em;margin:0;position:relative;}
+  .band p{font-size:18px;color:rgba(255,255,255,.85);margin:16px auto 0;max-width:520px;position:relative;}
+  .band .cta-row{justify-content:center;position:relative;}
+
+  /* contact */
+  .contact{background:var(--bg);}
+  .contact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media(max-width:760px){.contact-cards{grid-template-columns:1fr;}}
+  .ccard{display:block;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:28px;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s,box-shadow .15s;}
+  .ccard:hover{border-color:var(--teal);transform:translateY(-2px);box-shadow:0 10px 30px rgba(13,26,43,.07);}
+  .cico{width:46px;height:46px;border-radius:12px;background:rgba(42,127,158,.10);color:var(--teal);display:grid;place-items:center;margin-bottom:16px;}
+  .ccard h3{font-size:18px;font-weight:700;margin:0 0 6px;color:var(--ink);letter-spacing:-.01em;}
+  .ccard p{font-size:14.5px;color:var(--ink-2);margin:0 0 14px;word-break:break-word;}
+  .clink{font-size:14px;font-weight:700;color:var(--teal);}
+
+  /* footer */
+  footer{background:var(--ink);color:rgba(255,255,255,.7);}
+  .foot{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:40px 0;}
+  .foot .wordmark{color:#fff;}.foot .wordmark span{color:#6B7891;}
+  .foot-links{display:flex;gap:26px;font-size:14px;font-weight:500;}
+  .foot-links a:hover{color:#fff;}
+  .foot small{font-size:13px;color:rgba(255,255,255,.45);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="wordmark">Docs<span>Buddy</span></div>
+    <nav class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-dark" href="#get">Get the app</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" style="padding:0;">
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <div class="eyebrow">Warranties · Insurance · Bills</div>
+      <h1>Never miss a renewal again</h1>
+      <p class="lede">DocsBuddy keeps track of warranties, insurance, bills and dates for everything you own — so the deadlines never sneak up on you.</p>
+      <div class="cta-row">
+        <a class="badge" href="https://play.google.com/store/apps/details?id=in.mytechbytes.docsbuddy" target="_blank" rel="noopener" aria-label="Get it on Google Play">
+          <svg width="20" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.3C3.3 2.6 3.1 3 3.1 3.6v16.8c0 .6.2 1 .5 1.3l.1.1L13 12.6v-.2L3.7 2.2l-.1.1z" fill="#00C3FF"/><path d="M16.1 15.7l-3.1-3.1v-.2l3.1-3.1.1.1 3.7 2.1c1 .6 1 1.6 0 2.2l-3.8 2-.1-.1z" fill="#FFC107"/><path d="M16.2 15.6L13 12.5 3.6 21.8c.4.4 1 .4 1.6.1l11-6.3z" fill="#F44336"/><path d="M16.2 9.4L5.2 3.1c-.6-.3-1.2-.3-1.6.1L13 12.5l3.2-3.1z" fill="#4CAF50"/></svg>
+          <span><small>GET IT ON</small><b>Google Play</b></span>
+        </a>
+        <a class="btn btn-ghost" href="#how">How it works</a>
+      </div>
+      <div class="rating"><span class="stars">★★★★★</span> Loved by families organising everything they own</div>
+    </div>
+    <div class="hero-art">
+      <div class="glow g1"></div>
+      <div class="glow g2"></div>
+      <img class="phone p-back" src="assets/android-dashboard.png" alt="DocsBuddy dashboard on Android" loading="eager" width="268" />
+      <img class="phone p-front" src="assets/ios-welcome.png" alt="DocsBuddy welcome screen" loading="eager" width="290" />
+    </div>
+  </div>
+</section>
+
+<!-- VALUE PROPS -->
+<section class="props" id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Everything you own, never out of sight</h2>
+      <p>One private home for your assets, their documents, and every date that matters.</p>
+    </div>
+    <div class="grid">
+      <div class="card c1">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
+        <h3>All your assets in one place</h3>
+        <p>Vehicles, appliances, electronics, even documents — organised by room and category, so you always know what you have and where it lives.</p>
+      </div>
+      <div class="card c2">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></div>
+        <h3>Smart reminders, weeks ahead</h3>
+        <p>Configure 60 / 30 / 7 / 1-day alerts for every renewal — delivered by push, email or WhatsApp, whichever you actually check.</p>
+      </div>
+      <div class="card c3">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Keep the whole family in sync</h3>
+        <p>Invite up to 8 members. Everyone gets reminded and anyone can update — no more single point of failure when a date is due.</p>
+      </div>
+      <div class="card c4">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Local-first &amp; private</h3>
+        <p>Works offline and feels instant. Your data syncs securely in the background, encrypted in transit — yours and your family's alone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAILED FEATURES -->
+<section class="feature">
+  <div class="wrap"><div class="row">
+    <div class="copy">
+      <div class="eyebrow">Stay ahead</div>
+      <h2>Smart reminders, weeks ahead</h2>
+      <p class="lede2">Configure 60 / 30 / 7 / 1-day alerts for every renewal. Push, email or WhatsApp — your choice. The deadline never sneaks up on you again.</p>
+      <div class="flist">
+        <div class="li"><span class="ck">✓</span> Insurance, pollution, AMC, tax &amp; warranty</div>
+        <div class="li"><span class="ck">✓</span> Repeats monthly, yearly or on your schedule</div>
+        <div class="li"><span class="ck">✓</span> Reminds every family member, not just you</div>
+      </div>
+    </div>
+    <div class="art duo">
+      <div class="a-glow"></div>
+      <img class="ph ph-back" src="assets/android-add-reminder.png" alt="Add a reminder on Android" loading="lazy" />
+      <img class="ph ph-front" src="assets/ios-reminders.png" alt="Smart reminders on iPhone" loading="lazy" />
+    </div>
+  </div></div>
+</section>
+
+<section class="feature alt flip">
+  <div class="wrap"><div class="row">
+    <div class="copy">
+      <div class="eyebrow">Organise</div>
+      <h2>All your assets in one place</h2>
+      <p class="lede2">Vehicles, appliances, electronics, even documents — organised by room and category. Snap an invoice and DocsBuddy fills in the details for you.</p>
+      <div class="chips">
+        <span class="chip">Vehicles</span><span class="chip">Appliances</span><span class="chip">Electronics</span><span class="chip">Rooms &amp; categories</span>
+      </div>
+    </div>
+    <div class="art duo">
+      <div class="a-glow"></div>
+      <img class="ph ph-back" src="assets/android-rooms.png" alt="Rooms on Android" loading="lazy" />
+      <img class="ph ph-front" src="assets/ios-assets.png" alt="Assets organised on iPhone" loading="lazy" />
+    </div>
+  </div></div>
+</section>
+
+<section class="feature">
+  <div class="wrap"><div class="row">
+    <div class="copy">
+      <div class="eyebrow">Never lose a receipt</div>
+      <h2>Every document, attached and safe</h2>
+      <p class="lede2">Invoices, warranties and insurance policies live right alongside the asset they belong to — searchable, synced across devices, and always one tap away.</p>
+      <div class="flist">
+        <div class="li"><span class="ck">✓</span> Serial numbers, purchase dates &amp; warranty expiry</div>
+        <div class="li"><span class="ck">✓</span> Photos, PDFs and receipts in one tap</div>
+        <div class="li"><span class="ck">✓</span> Backed up and synced automatically</div>
+      </div>
+    </div>
+    <div class="art solo coral">
+      <div class="a-glow"></div>
+      <img class="ph ph-one" src="assets/android-asset-detail.png" alt="Asset detail with documents" loading="lazy" />
+    </div>
+  </div></div>
+</section>
+
+<section class="feature dark flip">
+  <div class="wrap"><div class="row">
+    <div class="copy">
+      <div class="eyebrow">Together</div>
+      <h2>Keep the whole family in sync</h2>
+      <p class="lede2">Invite up to 8 members. Everyone gets reminded, anyone can update — no more single point of failure when a renewal is due.</p>
+      <div class="fstats">
+        <div><div class="v">8</div><div class="k">members per family</div></div>
+        <div class="sep"></div>
+        <div><div class="v">1</div><div class="k">shared source of truth</div></div>
+        <div class="sep"></div>
+        <div><div class="v">0</div><div class="k">missed deadlines</div></div>
+      </div>
+    </div>
+    <div class="art solo">
+      <div class="a-glow"></div>
+      <img class="ph ph-one" src="assets/android-family.png" alt="Family sharing" loading="lazy" />
+    </div>
+  </div></div>
+</section>
+
+<section class="feature alt">
+  <div class="wrap"><div class="row">
+    <div class="copy">
+      <div class="eyebrow">Private by design</div>
+      <h2>Locked down, end to end</h2>
+      <p class="lede2">Face ID, fingerprint unlock, app lock and two-factor authentication keep your documents yours. Your home inventory is nobody's business but your family's.</p>
+      <div class="flist">
+        <div class="li"><span class="ck">✓</span> Biometric login — Face ID &amp; fingerprint</div>
+        <div class="li"><span class="ck">✓</span> Two-factor authentication &amp; recovery codes</div>
+        <div class="li"><span class="ck">✓</span> App lock with auto-lock timer</div>
+      </div>
+    </div>
+    <div class="art solo">
+      <div class="a-glow"></div>
+      <img class="ph ph-one" src="assets/ios-security.png" alt="Security and 2FA on iPhone" loading="lazy" />
+    </div>
+  </div></div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Set up in minutes</h2>
+      <p>Three steps between you and a calmer renewal season.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="n">STEP 1</div>
+        <h3>Add an asset</h3>
+        <p>Snap an invoice or pick from the catalogue. DocsBuddy fills in the brand, model and details for you.</p>
+      </div>
+      <div class="step">
+        <div class="n">STEP 2</div>
+        <h3>Set due dates</h3>
+        <p>Insurance, AMC, pollution, warranty, tax, fitness — add the dates that matter and how often they repeat.</p>
+      </div>
+      <div class="step">
+        <div class="n">STEP 3</div>
+        <h3>Get nudged</h3>
+        <p>Sit back. DocsBuddy reminds you and your family well ahead — and again as the deadline closes in.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section class="download" id="get">
+  <div class="wrap">
+    <div class="band">
+      <div class="gb1"></div><div class="gb2"></div>
+      <h2>Start tracking today</h2>
+      <p>Free to download. Add your first asset, set a reminder, and never think about a renewal date again.</p>
+      <div class="cta-row">
+        <a class="badge light" href="https://play.google.com/store/apps/details?id=in.mytechbytes.docsbuddy" target="_blank" rel="noopener" aria-label="Get it on Google Play">
+          <svg width="20" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.3C3.3 2.6 3.1 3 3.1 3.6v16.8c0 .6.2 1 .5 1.3l.1.1L13 12.6v-.2L3.7 2.2l-.1.1z" fill="#00C3FF"/><path d="M16.1 15.7l-3.1-3.1v-.2l3.1-3.1.1.1 3.7 2.1c1 .6 1 1.6 0 2.2l-3.8 2-.1-.1z" fill="#FFC107"/><path d="M16.2 15.6L13 12.5 3.6 21.8c.4.4 1 .4 1.6.1l11-6.3z" fill="#F44336"/><path d="M16.2 9.4L5.2 3.1c-.6-.3-1.2-.3-1.6.1L13 12.5l3.2-3.1z" fill="#4CAF50"/></svg>
+          <span><small>GET IT ON</small><b>Google Play</b></span>
+        </a>
+        <a class="badge light" href="#" aria-label="Download on the App Store">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D1A2B" aria-hidden="true"><path d="M17.05 12.04c-.03-2.9 2.37-4.3 2.48-4.36-1.35-1.98-3.46-2.25-4.21-2.28-1.79-.18-3.5 1.05-4.41 1.05-.9 0-2.31-1.03-3.8-1-1.95.03-3.76 1.13-4.76 2.88-2.03 3.52-.52 8.74 1.46 11.6.97 1.4 2.12 2.97 3.63 2.92 1.46-.06 2.01-.94 3.77-.94 1.76 0 2.26.94 3.8.91 1.57-.03 2.56-1.43 3.52-2.84 1.11-1.63 1.57-3.21 1.59-3.29-.03-.02-3.05-1.17-3.08-4.64zM14.2 4.59c.8-.97 1.34-2.32 1.19-3.66-1.15.05-2.55.77-3.38 1.74-.74.85-1.39 2.22-1.22 3.53 1.29.1 2.6-.65 3.41-1.61z"/></svg>
+          <span><small>Download on the</small><b>App Store</b></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>We're here to help</h2>
+      <p>Questions, feedback, or trouble signing in? Reach out — a real person reads every message.</p>
+    </div>
+    <div class="contact-cards">
+      <a class="ccard" href="mailto:support@docsbuddy.mytechbytes.in">
+        <div class="cico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
+        <h3>Email support</h3>
+        <p>support@docsbuddy.mytechbytes.in</p>
+        <span class="clink">Send a message →</span>
+      </a>
+      <a class="ccard" href="https://play.google.com/store/apps/details?id=in.mytechbytes.docsbuddy" target="_blank" rel="noopener">
+        <div class="cico"><svg width="22" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.3C3.3 2.6 3.1 3 3.1 3.6v16.8c0 .6.2 1 .5 1.3l.1.1L13 12.6v-.2L3.7 2.2l-.1.1z" fill="#00C3FF"/><path d="M16.1 15.7l-3.1-3.1v-.2l3.1-3.1.1.1 3.7 2.1c1 .6 1 1.6 0 2.2l-3.8 2-.1-.1z" fill="#FFC107"/><path d="M16.2 15.6L13 12.5 3.6 21.8c.4.4 1 .4 1.6.1l11-6.3z" fill="#F44336"/><path d="M16.2 9.4L5.2 3.1c-.6-.3-1.2-.3-1.6.1L13 12.5l3.2-3.1z" fill="#4CAF50"/></svg></div>
+        <h3>On Google Play</h3>
+        <p>Download DocsBuddy or leave a review on the Play Store.</p>
+        <span class="clink">Open Play Store →</span>
+      </a>
+      <a class="ccard" href="privacy.html">
+        <div class="cico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Privacy &amp; data</h3>
+        <p>How we collect, use and protect your information.</p>
+        <span class="clink">Read the policy →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div class="wordmark">Docs<span>Buddy</span></div>
+    <nav class="foot-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+      <a href="mailto:support@docsbuddy.mytechbytes.in">Contact</a>
+    </nav>
+    <small>© 2026 DocsBuddy · mytechbytes.in</small>
+  </div>
+</footer>
+
+</body>
+</html>

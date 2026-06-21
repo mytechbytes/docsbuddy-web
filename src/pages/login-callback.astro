@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
+import site from "../data/site.json";
+
+const scheme = site.deepLink.scheme;
+const playUrl = site.android.playUrl;
+---
+
+<BaseLayout title="Opening DocsBuddy…" description="Returning you to the DocsBuddy app." noindex>
+  <div
+    class="flex min-h-screen items-center justify-center bg-bg p-6"
+    data-login-callback
+    data-scheme={scheme}
+    data-play={playUrl}
+  >
+    <div
+      class="w-full max-w-[420px] rounded-[24px] border border-line bg-paper px-8 py-10 text-center shadow-[0_12px_40px_color-mix(in_srgb,var(--ink)_8%,transparent)]"
+    >
+      <div class="mb-7 text-[22px] font-extrabold tracking-[-.01em] text-ink">
+        Docs<span class="text-muted">Buddy</span>
+      </div>
+      <div
+        class="mx-auto mb-[22px] h-[54px] w-[54px] rounded-full border-4 border-line border-t-teal [animation:spin_.9s_linear_infinite]"
+      >
+      </div>
+      <h1 class="mb-2 text-[22px] font-extrabold tracking-[-.02em] text-ink">Opening DocsBuddy…</h1>
+      <p class="mb-1.5 text-[15px] leading-[1.55] text-ink-2">
+        We're handing you back to the app to finish signing in.
+      </p>
+      <p class="mt-1 text-[13.5px] text-muted">
+        If nothing happens in a few seconds, tap “Open the app” below.
+      </p>
+
+      <div class="mt-7 flex flex-col gap-3">
+        <a
+          id="openApp"
+          href="#"
+          class="flex items-center justify-center gap-2.5 rounded-[13px] bg-onyx px-5 py-3.5 text-[15px] font-bold text-on-onyx transition-colors hover:bg-[color-mix(in_srgb,var(--onyx)_88%,#ffffff)]"
+          >Open the app</a
+        >
+        <a
+          id="playBtn"
+          href="#"
+          aria-label="Get it on Google Play"
+          class="flex items-center justify-center gap-2.5 rounded-[13px] border-[1.5px] border-line bg-paper px-5 py-3.5 text-ink"
+        >
+          <Icon name="play" size={20} />
+          <span class="text-left leading-none">
+            <small class="block text-[10px] font-medium leading-[1.1] opacity-70">GET IT ON</small>
+            <b class="block text-[15px] font-bold leading-[1.15]">Google Play</b>
+          </span>
+        </a>
+      </div>
+
+      <div class="mt-6 text-[12.5px] text-muted">
+        Trouble signing in? <a href={`mailto:${site.supportEmail}`} class="text-teal"
+          >Contact support</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <script>
+    import "../scripts/login-callback.js";
+  </script>
+</BaseLayout>

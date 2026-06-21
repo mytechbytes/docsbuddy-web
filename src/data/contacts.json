@@ -1,0 +1,24 @@
+[
+  {
+    "icon": "mail",
+    "title": "Email support",
+    "body": "support@docsbuddy.mytechbytes.in",
+    "linkLabel": "Send a message →",
+    "href": "mailto:support@docsbuddy.mytechbytes.in"
+  },
+  {
+    "icon": "play",
+    "title": "On Google Play",
+    "body": "Download DocsBuddy or leave a review on the Play Store.",
+    "linkLabel": "Open Play Store →",
+    "href": "https://play.google.com/store/apps/details?id=in.mytechbytes.docsbuddy",
+    "external": true
+  },
+  {
+    "icon": "shield",
+    "title": "Privacy & data",
+    "body": "How we collect, use and protect your information.",
+    "linkLabel": "Read the policy →",
+    "href": "/privacy.html"
+  }
+]

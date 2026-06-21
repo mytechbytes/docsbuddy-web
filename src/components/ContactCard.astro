@@ -1,0 +1,30 @@
+---
+import Icon from "./Icon.astro";
+interface Props {
+  icon: string;
+  title: string;
+  body: string;
+  linkLabel: string;
+  href: string;
+  external?: boolean;
+}
+const { icon, title, body, linkLabel, href, external = false } = Astro.props;
+---
+
+<a
+  href={href}
+  target={external ? "_blank" : undefined}
+  rel={external ? "noopener" : undefined}
+  class="group block rounded-2xl border border-line bg-paper p-7 transition-all duration-150 hover:-translate-y-0.5 hover:border-teal hover:shadow-[var(--shadow-hover)]"
+  data-reveal
+>
+  <div
+    class="mb-4 grid h-[46px] w-[46px] place-items-center rounded-xl text-teal"
+    style="background:color-mix(in srgb,var(--teal) 10%,transparent)"
+  >
+    <Icon name={icon} size={24} />
+  </div>
+  <h3 class="mb-1.5 text-[18px] font-bold tracking-[-.01em] text-ink">{title}</h3>
+  <p class="mb-3.5 break-words text-[14.5px] text-ink-2">{body}</p>
+  <span class="text-[14px] font-bold text-teal">{linkLabel}</span>
+</a>

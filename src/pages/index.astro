@@ -1,0 +1,177 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import StoreBadge from "../components/StoreBadge.astro";
+import ValueCard from "../components/ValueCard.astro";
+import FeatureSection from "../components/FeatureSection.astro";
+import Step from "../components/Step.astro";
+import ContactCard from "../components/ContactCard.astro";
+
+import site from "../data/site.json";
+import valueProps from "../data/valueProps.json";
+import features from "../data/features.json";
+import steps from "../data/steps.json";
+import contacts from "../data/contacts.json";
+
+const phoneShadow = "[filter:drop-shadow(var(--shadow-phone))]";
+const secHeadH2 = "text-[40px] font-extrabold leading-[1.1] tracking-[-.025em] text-ink";
+---
+
+<BaseLayout title={`${site.name} — ${site.tagline}`} description={site.description}>
+  <SiteHeader />
+
+  {/* HERO */}
+  <section class="overflow-hidden bg-bg">
+    <div class="mx-auto max-w-[1180px] px-6">
+      <div
+        class="flex flex-col items-start gap-8 py-[52px] min-[981px]:flex-row min-[981px]:items-center min-[981px]:pb-20 min-[981px]:pt-[72px]"
+      >
+        <div class="relative z-[3] w-full min-[981px]:flex-[0_0_470px]" data-reveal>
+          <div class="mb-[18px] text-[13px] font-bold uppercase tracking-[.18em] text-teal">
+            Warranties · Insurance · Bills
+          </div>
+          <h1
+            class="m-0 text-[36px] font-extrabold leading-[1.03] tracking-[-.03em] text-ink min-[521px]:text-[44px] min-[981px]:text-[60px]"
+          >
+            Never miss a renewal again
+          </h1>
+          <p class="mt-[22px] max-w-[440px] text-[19px] leading-[1.55] text-ink-2">
+            DocsBuddy keeps track of warranties, insurance, bills and dates for everything you own —
+            so the deadlines never sneak up on you.
+          </p>
+          <div class="mt-[34px] flex flex-wrap gap-3.5">
+            <StoreBadge store="play" variant="dark" />
+            <a
+              href="/#how"
+              class="inline-flex items-center rounded-xl border-[1.5px] border-line px-5 py-[11px] text-[15px] font-bold text-ink transition-colors hover:border-ink-2"
+              >How it works</a
+            >
+          </div>
+          <div class="mt-[22px] flex items-center gap-2 text-[13.5px] font-medium text-muted">
+            <span class="tracking-[1px] text-amber">★★★★★</span>
+            Loved by families organising everything they own
+          </div>
+        </div>
+
+        <div
+          class="relative h-[420px] w-full min-[521px]:h-[480px] min-[981px]:h-[600px] min-[981px]:flex-1"
+        >
+          <div
+            class="glow-teal pointer-events-none absolute right-0 top-0 h-[360px] w-[360px] rounded-full min-[521px]:right-[90px] min-[521px]:h-[540px] min-[521px]:w-[540px]"
+          >
+          </div>
+          <div
+            class="glow-coral pointer-events-none absolute -bottom-[30px] right-[120px] h-[300px] w-[300px] rounded-full min-[521px]:right-[320px] min-[521px]:h-[340px] min-[521px]:w-[340px]"
+          >
+          </div>
+          <img
+            src="/assets/android-dashboard.png"
+            alt="DocsBuddy dashboard on Android"
+            width="268"
+            loading="eager"
+            class={`absolute left-[2%] top-[44px] w-[210px] -rotate-[5deg] ${phoneShadow} min-[521px]:left-[8%] min-[521px]:top-[55px] min-[521px]:w-[268px] min-[981px]:left-20`}
+          />
+          <img
+            src="/assets/ios-welcome.png"
+            alt="DocsBuddy welcome screen"
+            width="290"
+            loading="eager"
+            class={`absolute left-[38%] top-3 w-[228px] rotate-[4deg] ${phoneShadow} min-[521px]:left-[40%] min-[521px]:w-[290px] min-[981px]:left-[290px]`}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* VALUE PROPS */}
+  <section id="features" class="bg-bg py-24">
+    <div class="mx-auto max-w-[1180px] px-6">
+      <div class="mx-auto mb-12 max-w-[680px] text-center" data-reveal>
+        <h2 class={secHeadH2}>Everything you own, never out of sight</h2>
+        <p class="mt-4 text-[18px] text-ink-2">
+          One private home for your assets, their documents, and every date that matters.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 gap-5 min-[761px]:grid-cols-2">
+        {valueProps.map((v) => <ValueCard icon={v.icon} accent={v.accent} title={v.title} body={v.body} />)}
+      </div>
+    </div>
+  </section>
+
+  {/* DETAILED FEATURES */}
+  {features.map((f) => <FeatureSection feature={f} />)}
+
+  {/* HOW IT WORKS */}
+  <section id="how" class="bg-paper py-24">
+    <div class="mx-auto max-w-[1180px] px-6">
+      <div class="mx-auto mb-12 max-w-[680px] text-center" data-reveal>
+        <h2 class={secHeadH2}>Set up in minutes</h2>
+        <p class="mt-4 text-[18px] text-ink-2">
+          Three steps between you and a calmer renewal season.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 gap-5 min-[761px]:grid-cols-3">
+        {steps.map((s) => <Step n={s.n} title={s.title} body={s.body} />)}
+      </div>
+    </div>
+  </section>
+
+  {/* DOWNLOAD */}
+  <section id="get" class="bg-paper pb-[100px] pt-10">
+    <div class="mx-auto max-w-[1180px] px-6">
+      <div
+        class="band-grad relative overflow-hidden rounded-[28px] px-12 py-16 text-center"
+        data-reveal
+      >
+        <div
+          class="blob-bright pointer-events-none absolute -right-[50px] -top-[60px] h-[280px] w-[280px] rounded-full"
+        >
+        </div>
+        <div
+          class="blob-faint pointer-events-none absolute -bottom-[70px] -left-[50px] h-[230px] w-[230px] rounded-full"
+        >
+        </div>
+        <h2 class="relative m-0 text-[44px] font-extrabold tracking-[-.03em] text-white">
+          Start tracking today
+        </h2>
+        <p class="relative mx-auto mt-4 max-w-[520px] text-[18px] text-white/85">
+          Free to download. Add your first asset, set a reminder, and never think about a renewal
+          date again.
+        </p>
+        <div class="relative mt-8 flex flex-wrap justify-center gap-3.5">
+          <StoreBadge store="play" variant="light" />
+          <StoreBadge store="apple" variant="light" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* CONTACT */}
+  <section id="contact" class="bg-bg py-24">
+    <div class="mx-auto max-w-[1180px] px-6">
+      <div class="mx-auto mb-12 max-w-[680px] text-center" data-reveal>
+        <h2 class={secHeadH2}>We're here to help</h2>
+        <p class="mt-4 text-[18px] text-ink-2">
+          Questions, feedback, or trouble signing in? Reach out — a real person reads every message.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 gap-5 min-[761px]:grid-cols-3">
+        {
+          contacts.map((c) => (
+            <ContactCard
+              icon={c.icon}
+              title={c.title}
+              body={c.body}
+              linkLabel={c.linkLabel}
+              href={c.href}
+              external={c.external}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <SiteFooter />
+</BaseLayout>

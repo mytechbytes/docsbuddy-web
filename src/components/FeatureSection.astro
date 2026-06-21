@@ -1,0 +1,110 @@
+---
+import PhoneArt from "./PhoneArt.astro";
+
+interface Stat {
+  value: number;
+  label: string;
+}
+interface Img {
+  src: string;
+  alt: string;
+}
+interface Feature {
+  eyebrow: string;
+  heading: string;
+  lede: string;
+  tone: "default" | "alt" | "dark";
+  flip: boolean;
+  layout: "duo" | "solo";
+  glow?: "teal" | "coral";
+  list?: string[];
+  chips?: string[];
+  stats?: Stat[];
+  images: { back?: Img; front?: Img; one?: Img };
+}
+interface Props {
+  feature: Feature;
+}
+const { feature: f } = Astro.props;
+
+const isDark = f.tone === "dark";
+const sectionTone = isDark ? "bg-onyx text-on-onyx" : f.tone === "alt" ? "bg-bg" : "bg-paper";
+const headTone = isDark ? "text-on-onyx" : "text-ink";
+const ledeTone = isDark ? "text-on-onyx-2" : "text-ink-2";
+const rowDir = f.flip ? "min-[981px]:flex-row-reverse" : "min-[981px]:flex-row";
+---
+
+<section class={`py-[92px] ${sectionTone}`}>
+  <div class="mx-auto max-w-[1180px] px-6">
+    <div
+      class={`flex flex-col items-start gap-9 min-[981px]:items-center min-[981px]:gap-14 ${rowDir}`}
+    >
+      <div class="w-full min-[981px]:flex-[0_0_430px]" data-reveal>
+        <div class="mb-[18px] text-[13px] font-bold uppercase tracking-[.18em] text-teal">
+          {f.eyebrow}
+        </div>
+        <h2
+          class={`text-[32px] font-extrabold leading-[1.1] tracking-[-.025em] min-[981px]:text-[38px] ${headTone}`}
+        >
+          {f.heading}
+        </h2>
+        <p class={`mt-[18px] max-w-[430px] text-[17.5px] leading-[1.55] ${ledeTone}`}>{f.lede}</p>
+
+        {
+          f.list && (
+            <div class="mt-6 flex flex-col gap-3">
+              {f.list.map((item) => (
+                <div class={`flex items-center gap-3 text-[15.5px] font-semibold ${ledeTone}`}>
+                  <span
+                    class="grid h-[23px] w-[23px] flex-none place-items-center rounded-full text-[12px] font-bold text-teal"
+                    style="background:color-mix(in srgb,var(--teal) 12%,transparent)"
+                  >
+                    ✓
+                  </span>
+                  {item}
+                </div>
+              ))}
+            </div>
+          )
+        }
+
+        {
+          f.chips && (
+            <div class="mt-6 flex flex-wrap gap-2.5">
+              {f.chips.map((c) => (
+                <span class="rounded-full border border-line bg-paper px-3.5 py-2 text-[13.5px] font-semibold text-ink-2">
+                  {c}
+                </span>
+              ))}
+            </div>
+          )
+        }
+
+        {
+          f.stats && (
+            <div class="mt-[26px] flex gap-[22px]">
+              {f.stats.map((s, i) => (
+                <>
+                  {i > 0 && (
+                    <div class="w-px bg-[color-mix(in_srgb,var(--on-onyx)_16%,transparent)]" />
+                  )}
+                  <div>
+                    <div
+                      class="text-[26px] font-extrabold tracking-[-.02em] tabular-nums text-on-onyx min-[981px]:text-[32px]"
+                      data-count={s.value}
+                    >
+                      {s.value}
+                    </div>
+                    <div class="text-[13px] font-medium text-on-onyx-2">{s.label}</div>
+                  </div>
+                </>
+              ))}
+            </div>
+          )
+        }
+      </div>
+
+      <PhoneArt layout={f.layout} glow={f.glow} images={f.images} dark={isDark} />
+    </div>
+  </div>
+</section>

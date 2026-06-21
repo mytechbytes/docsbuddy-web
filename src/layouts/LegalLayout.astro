@@ -1,0 +1,94 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Wordmark from "../components/Wordmark.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
+import site from "../data/site.json";
+
+interface Props {
+  title: string;
+  description?: string;
+  heading: string;
+  updated: string;
+  eyebrow?: string;
+}
+const { title, description, heading, updated, eyebrow = "Legal" } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <header class="site-header sticky top-0 z-50 border-b border-line">
+    <div class="mx-auto flex h-[66px] max-w-[760px] items-center justify-between px-6">
+      <Wordmark class="text-[20px] text-ink" />
+      <div class="flex items-center gap-3 text-[14px] font-semibold text-ink-2">
+        <a href="/" class="transition-colors hover:text-teal">&larr; Back to site</a>
+        <ThemeToggle />
+      </div>
+    </div>
+  </header>
+
+  <main class="legal-doc mx-auto max-w-[760px] px-6 pb-24 pt-14">
+    <div class="text-[12px] font-bold uppercase tracking-[.16em] text-teal">{eyebrow}</div>
+    <h1 class="mb-1.5 mt-3 text-[40px] font-extrabold leading-[1.1] tracking-[-.025em] text-ink">
+      {heading}
+    </h1>
+    <div class="mb-9 text-[14px] text-muted">{updated}</div>
+    <slot />
+  </main>
+
+  <footer class="border-t border-line">
+    <div
+      class="mx-auto flex max-w-[760px] flex-wrap justify-between gap-3 px-6 py-7 text-[13px] text-muted"
+    >
+      <span>© {site.copyrightYear} {site.name}</span>
+      <span>
+        <a href="/" class="hover:text-ink-2">Home</a> ·
+        <a href="/privacy.html" class="hover:text-ink-2">Privacy</a> ·
+        <a href="/terms.html" class="hover:text-ink-2">Terms</a> ·
+        <a href={`mailto:${site.supportEmail}`} class="hover:text-ink-2">Contact</a>
+      </span>
+    </div>
+  </footer>
+</BaseLayout>
+
+{/* Slotted page content isn't tagged by Astro scoping, so doc typography is global,
+    namespaced under .legal-doc. */}
+<style is:global>
+  .legal-doc {
+    color: var(--ink-2);
+    line-height: 1.65;
+  }
+  .legal-doc h2 {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin: 38px 0 10px;
+  }
+  .legal-doc p {
+    margin: 0 0 14px;
+    font-size: 16px;
+  }
+  .legal-doc ul {
+    margin: 0 0 14px;
+    padding-left: 22px;
+    list-style: disc;
+  }
+  .legal-doc li {
+    margin: 6px 0;
+    font-size: 16px;
+  }
+  .legal-doc strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .legal-doc a {
+    color: var(--teal);
+  }
+  .legal-doc .note {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 20px;
+    font-size: 15px;
+    margin: 20px 0;
+  }
+</style>

@@ -1,0 +1,20 @@
+---
+import Icon from "./Icon.astro";
+interface Props {
+  icon: string;
+  accent: string;
+  title: string;
+  body: string;
+}
+const { icon, accent, title, body } = Astro.props;
+// Per-item accent tint is data-driven → inline style (Tailwind can't emit dynamic classes).
+const iconStyle = `background:color-mix(in srgb,var(--${accent}) 12%,transparent);color:var(--${accent})`;
+---
+
+<div class="rounded-2xl border border-line bg-paper p-[30px] shadow-[var(--shadow-card)]" data-reveal>
+  <div class="mb-[18px] grid h-12 w-12 place-items-center rounded-[13px]" style={iconStyle}>
+    <Icon name={icon} size={24} />
+  </div>
+  <h3 class="mb-2 text-[20px] font-bold tracking-[-.01em] text-ink">{title}</h3>
+  <p class="text-[15.5px] text-ink-2">{body}</p>
+</div>

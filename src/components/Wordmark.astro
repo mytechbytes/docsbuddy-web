@@ -1,0 +1,12 @@
+---
+import site from "../data/site.json";
+interface Props {
+  href?: string;
+  class?: string;
+}
+const { href = "/", class: className = "" } = Astro.props;
+---
+
+<a href={href} class={`font-extrabold tracking-[-.01em] ${className}`}>
+  {site.wordmark.head}<span class="text-muted">{site.wordmark.tail}</span>
+</a>

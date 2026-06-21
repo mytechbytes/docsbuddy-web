@@ -1,0 +1,26 @@
+[
+  {
+    "icon": "grid",
+    "accent": "teal",
+    "title": "All your assets in one place",
+    "body": "Vehicles, appliances, electronics, even documents — organised by room and category, so you always know what you have and where it lives."
+  },
+  {
+    "icon": "bell",
+    "accent": "green",
+    "title": "Smart reminders, weeks ahead",
+    "body": "Configure 60 / 30 / 7 / 1-day alerts for every renewal — delivered by push, email or WhatsApp, whichever you actually check."
+  },
+  {
+    "icon": "users",
+    "accent": "blue",
+    "title": "Keep the whole family in sync",
+    "body": "Invite up to 8 members. Everyone gets reminded and anyone can update — no more single point of failure when a date is due."
+  },
+  {
+    "icon": "shield",
+    "accent": "navy",
+    "title": "Local-first & private",
+    "body": "Works offline and feels instant. Your data syncs securely in the background, encrypted in transit — yours and your family's alone."
+  }
+]

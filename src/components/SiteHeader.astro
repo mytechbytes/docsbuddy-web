@@ -1,0 +1,78 @@
+---
+import site from "../data/site.json";
+import Wordmark from "./Wordmark.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+
+const nav = site.nav;
+const playUrl = site.android.playUrl;
+const ctaClass =
+  "inline-flex items-center rounded-xl bg-onyx px-[18px] py-2.5 font-bold text-on-onyx transition-colors hover:bg-[color-mix(in_srgb,var(--onyx)_88%,#ffffff)]";
+---
+
+<header class="site-header sticky top-0 z-50 border-b border-line">
+  <div class="mx-auto max-w-[1180px] px-6">
+    <div class="flex h-[68px] items-center justify-between">
+      <Wordmark class="text-[21px] text-ink" />
+
+      {/* Desktop nav */}
+      <nav class="hidden items-center gap-7 text-[14.5px] font-semibold text-ink-2 min-[761px]:flex">
+        {nav.map((l) => <a href={l.href} class="transition-colors hover:text-teal">{l.label}</a>)}
+        <ThemeToggle />
+        <a href={playUrl} target="_blank" rel="noopener" class={`text-[14.5px] ${ctaClass}`}>
+          Get the app
+        </a>
+      </nav>
+
+      {/* Mobile controls */}
+      <div class="flex items-center gap-2 min-[761px]:hidden">
+        <ThemeToggle />
+        <label
+          for="nav-toggle"
+          class="grid h-10 w-10 cursor-pointer place-items-center rounded-xl border border-line"
+          aria-label="Open menu"
+        >
+          <span class="flex h-[14px] w-5 flex-col justify-between">
+            <span class="burger-top h-[2px] w-full rounded-full bg-ink"></span>
+            <span class="burger-mid h-[2px] w-full rounded-full bg-ink"></span>
+            <span class="burger-bot h-[2px] w-full rounded-full bg-ink"></span>
+          </span>
+        </label>
+      </div>
+    </div>
+  </div>
+</header>
+
+{/* Drawer mechanism — outside the backdrop-filtered header so position:fixed
+   resolves against the viewport. Toggled purely in CSS via body:has(). */}
+<input id="nav-toggle" type="checkbox" class="sr-only" aria-hidden="true" tabindex="-1" />
+<label
+  for="nav-toggle"
+  class="drawer-scrim fixed inset-0 z-40 bg-[color-mix(in_srgb,var(--ink)_45%,transparent)] min-[761px]:hidden"
+  aria-hidden="true"></label>
+<aside
+  class="drawer-panel fixed right-0 top-0 z-50 flex h-screen w-[78%] max-w-[320px] flex-col bg-paper px-6 pb-8 pt-5 shadow-[var(--shadow-hover)] min-[761px]:hidden"
+>
+  <div class="mb-6 flex items-center justify-between">
+    <Wordmark class="text-[19px] text-ink" />
+    <label
+      for="nav-toggle"
+      class="grid h-9 w-9 cursor-pointer place-items-center rounded-lg border border-line text-[18px] text-ink-2"
+      aria-label="Close menu">&times;</label
+    >
+  </div>
+  <nav class="flex flex-col gap-1 text-[16px] font-semibold text-ink-2">
+    {
+      nav.map((l) => (
+        <a href={l.href} class="rounded-lg px-2 py-3 transition-colors hover:bg-bg hover:text-teal">
+          {l.label}
+        </a>
+      ))
+    }
+  </nav>
+  <a
+    href={playUrl}
+    target="_blank"
+    rel="noopener"
+    class={`mt-5 justify-center text-[15px] ${ctaClass}`}>Get the app</a
+  >
+</aside>

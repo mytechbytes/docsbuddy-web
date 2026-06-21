@@ -1,0 +1,16 @@
+# Cloudflare Pages headers.
+#
+# The two mobile App-Links verification files MUST be served as JSON with HTTP
+# 200 and NO redirects. The Apple file has no .json extension, so its MIME type
+# has to be forced explicitly or the iOS fetcher rejects it.
+/.well-known/apple-app-site-association
+  Content-Type: application/json
+  Cache-Control: public, max-age=3600
+
+/.well-known/assetlinks.json
+  Content-Type: application/json
+  Cache-Control: public, max-age=3600
+
+# Long-cache the immutable phone screenshots.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable

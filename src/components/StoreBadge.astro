@@ -1,0 +1,41 @@
+---
+import Icon from "./Icon.astro";
+import site from "../data/site.json";
+
+interface Props {
+  store: "play" | "apple";
+  variant?: "dark" | "light";
+  class?: string;
+}
+const { store, variant = "dark", class: className = "" } = Astro.props;
+
+const isPlay = store === "play";
+const live = isPlay ? site.android.live : site.ios.live;
+const href = isPlay ? site.android.playUrl : site.ios.appStoreUrl;
+
+const big = isPlay ? "Google Play" : "App Store";
+const small = isPlay ? "GET IT ON" : live ? "Download on the" : "COMING SOON";
+
+const base = "inline-flex items-center gap-[11px] px-5 py-3 rounded-[13px] transition-colors";
+const tone =
+  variant === "light"
+    ? "bg-paper text-ink shadow-[var(--shadow-card)]"
+    : "bg-onyx text-[var(--on-onyx)] hover:bg-[color-mix(in_srgb,var(--onyx)_88%,#ffffff)]";
+const smallTone = variant === "light" ? "opacity-65" : "opacity-80";
+const Tag = live ? "a" : "span";
+---
+
+<Tag
+  href={live ? href : undefined}
+  target={live && isPlay ? "_blank" : undefined}
+  rel={live && isPlay ? "noopener" : undefined}
+  aria-label={live ? `Get it on ${big}` : `${big} — coming soon`}
+  aria-disabled={live ? undefined : "true"}
+  class={`${base} ${tone} ${live ? "" : "cursor-default opacity-60"} ${className}`}
+>
+  <Icon name={store} size={22} />
+  <span class="text-left leading-none">
+    <small class={`block text-[10px] font-medium leading-[1.1] ${smallTone}`}>{small}</small>
+    <b class="block text-[17px] font-bold leading-[1.15]">{big}</b>
+  </span>
+</Tag>

@@ -1,0 +1,41 @@
+{
+  "name": "DocsBuddy",
+  "wordmark": { "head": "Docs", "tail": "Buddy" },
+  "tagline": "Never miss a renewal again",
+  "description": "DocsBuddy tracks your vehicles, appliances, electronics and documents — and reminds your whole family about insurance, AMC, pollution, warranty and tax dates weeks ahead.",
+  "domain": "docsbuddy.mytechbytes.in",
+  "url": "https://docsbuddy.mytechbytes.in",
+  "supportEmail": "support@docsbuddy.mytechbytes.in",
+  "themeColor": "#0D1A2B",
+  "copyrightYear": 2026,
+
+  "android": {
+    "package": "in.mytechbytes.docsbuddy",
+    "playUrl": "https://play.google.com/store/apps/details?id=in.mytechbytes.docsbuddy",
+    "live": true
+  },
+  "ios": {
+    "appStoreUrl": "",
+    "live": false
+  },
+  "deepLink": {
+    "scheme": "in.mytechbytes.docsbuddy://login-callback"
+  },
+
+  "placeholders": {
+    "appleTeamId": "<<REPLACE: APPLE_TEAM_ID>>",
+    "androidSha256": "<<REPLACE: SHA-256 of the GOOGLE PLAY APP-SIGNING key, colon-separated hex>>"
+  },
+
+  "nav": [
+    { "label": "Features", "href": "/#features" },
+    { "label": "How it works", "href": "/#how" },
+    { "label": "Privacy", "href": "/privacy.html" },
+    { "label": "Contact", "href": "/#contact" }
+  ],
+  "footerLinks": [
+    { "label": "Privacy Policy", "href": "/privacy.html" },
+    { "label": "Terms", "href": "/terms.html" },
+    { "label": "Contact", "href": "mailto:support@docsbuddy.mytechbytes.in" }
+  ]
+}

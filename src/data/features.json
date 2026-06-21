@@ -1,0 +1,85 @@
+[
+  {
+    "eyebrow": "Stay ahead",
+    "heading": "Smart reminders, weeks ahead",
+    "lede": "Configure 60 / 30 / 7 / 1-day alerts for every renewal. Push, email or WhatsApp — your choice. The deadline never sneaks up on you again.",
+    "tone": "default",
+    "flip": false,
+    "layout": "duo",
+    "glow": "teal",
+    "list": [
+      "Insurance, pollution, AMC, tax & warranty",
+      "Repeats monthly, yearly or on your schedule",
+      "Reminds every family member, not just you"
+    ],
+    "images": {
+      "back": { "src": "/assets/android-add-reminder.png", "alt": "Add a reminder on Android" },
+      "front": { "src": "/assets/ios-reminders.png", "alt": "Smart reminders on iPhone" }
+    }
+  },
+  {
+    "eyebrow": "Organise",
+    "heading": "All your assets in one place",
+    "lede": "Vehicles, appliances, electronics, even documents — organised by room and category. Snap an invoice and DocsBuddy fills in the details for you.",
+    "tone": "alt",
+    "flip": true,
+    "layout": "duo",
+    "glow": "teal",
+    "chips": ["Vehicles", "Appliances", "Electronics", "Rooms & categories"],
+    "images": {
+      "back": { "src": "/assets/android-rooms.png", "alt": "Rooms on Android" },
+      "front": { "src": "/assets/ios-assets.png", "alt": "Assets organised on iPhone" }
+    }
+  },
+  {
+    "eyebrow": "Never lose a receipt",
+    "heading": "Every document, attached and safe",
+    "lede": "Invoices, warranties and insurance policies live right alongside the asset they belong to — searchable, synced across devices, and always one tap away.",
+    "tone": "default",
+    "flip": false,
+    "layout": "solo",
+    "glow": "coral",
+    "list": [
+      "Serial numbers, purchase dates & warranty expiry",
+      "Photos, PDFs and receipts in one tap",
+      "Backed up and synced automatically"
+    ],
+    "images": {
+      "one": { "src": "/assets/android-asset-detail.png", "alt": "Asset detail with documents" }
+    }
+  },
+  {
+    "eyebrow": "Together",
+    "heading": "Keep the whole family in sync",
+    "lede": "Invite up to 8 members. Everyone gets reminded, anyone can update — no more single point of failure when a renewal is due.",
+    "tone": "dark",
+    "flip": true,
+    "layout": "solo",
+    "glow": "teal",
+    "stats": [
+      { "value": 8, "label": "members per family" },
+      { "value": 1, "label": "shared source of truth" },
+      { "value": 0, "label": "missed deadlines" }
+    ],
+    "images": {
+      "one": { "src": "/assets/android-family.png", "alt": "Family sharing" }
+    }
+  },
+  {
+    "eyebrow": "Private by design",
+    "heading": "Locked down, end to end",
+    "lede": "Face ID, fingerprint unlock, app lock and two-factor authentication keep your documents yours. Your home inventory is nobody's business but your family's.",
+    "tone": "alt",
+    "flip": false,
+    "layout": "solo",
+    "glow": "teal",
+    "list": [
+      "Biometric login — Face ID & fingerprint",
+      "Two-factor authentication & recovery codes",
+      "App lock with auto-lock timer"
+    ],
+    "images": {
+      "one": { "src": "/assets/ios-security.png", "alt": "Security and 2FA on iPhone" }
+    }
+  }
+]

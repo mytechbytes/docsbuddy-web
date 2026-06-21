@@ -1,0 +1,58 @@
+---
+interface Img {
+  src: string;
+  alt: string;
+}
+interface Props {
+  layout: "duo" | "solo";
+  glow?: "teal" | "coral";
+  images: { back?: Img; front?: Img; one?: Img };
+  dark?: boolean;
+}
+const { layout, glow = "teal", images, dark = false } = Astro.props;
+const glowClass = glow === "coral" ? "glow-coral" : "glow-teal";
+// Dark feature band needs a deeper drop-shadow than the themed default.
+const phoneShadow = dark
+  ? "[filter:drop-shadow(0_30px_54px_rgba(0,0,0,.42))]"
+  : "[filter:drop-shadow(var(--shadow-phone))]";
+---
+
+<div
+  class="relative h-[430px] w-full min-w-0 flex-1 min-[521px]:h-[480px] min-[981px]:h-[540px]"
+  data-reveal
+>
+  <div
+    class={`pointer-events-none absolute left-1/2 top-10 h-[320px] w-[320px] -translate-x-1/2 rounded-full min-[521px]:h-[420px] min-[521px]:w-[420px] ${glowClass}`}
+  >
+  </div>
+
+  {
+    layout === "duo" && images.back && images.front && (
+      <>
+        <img
+          src={images.back.src}
+          alt={images.back.alt}
+          loading="lazy"
+          class={`absolute left-[4%] top-12 w-[200px] -rotate-[5deg] min-[521px]:left-[16%] min-[521px]:w-[248px] ${phoneShadow}`}
+        />
+        <img
+          src={images.front.src}
+          alt={images.front.alt}
+          loading="lazy"
+          class={`absolute left-[40%] top-2 w-[222px] rotate-[4deg] min-[521px]:w-[278px] ${phoneShadow}`}
+        />
+      </>
+    )
+  }
+
+  {
+    layout === "solo" && images.one && (
+      <img
+        src={images.one.src}
+        alt={images.one.alt}
+        loading="lazy"
+        class={`absolute left-1/2 top-0 w-[240px] -translate-x-1/2 -rotate-2 min-[521px]:w-[292px] ${phoneShadow}`}
+      />
+    )
+  }
+</div>
