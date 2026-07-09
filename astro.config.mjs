@@ -2,6 +2,8 @@
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 
+import cloudflare from "@astrojs/cloudflare";
+
 /**
  * Vite 8 is newer than Astro's declared peer range, so Vite logs a few
  * deprecation advisories that are harmless for this static build. We mute ONLY
@@ -49,15 +51,20 @@ const quietLogger = {
 export default defineConfig({
   site: "https://docsbuddy.mytechbytes.in",
   output: "static",
+
   build: {
     // Clean per-page URLs: /privacy.html, /login-callback.html, etc.
     format: "file",
   },
+
   server: {
     port: 5173,
   },
+
   vite: {
     plugins: [tailwindcss()],
     customLogger: quietLogger,
   },
+
+  adapter: cloudflare(),
 });
