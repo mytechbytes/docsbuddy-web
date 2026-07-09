@@ -15,10 +15,14 @@ const glowClass = glow === "coral" ? "glow-coral" : "glow-teal";
 const phoneShadow = dark
   ? "[filter:drop-shadow(0_30px_54px_rgba(0,0,0,.42))]"
   : "[filter:drop-shadow(var(--shadow-phone))]";
+// A single tall phone needs more room on stacked (mobile/tablet) layouts than
+// the shorter, rotated pair — otherwise it overflows onto the text below it.
+const stackHeight =
+  layout === "solo" ? "h-[500px] min-[521px]:h-[600px]" : "h-[430px] min-[521px]:h-[480px]";
 ---
 
 <div
-  class="relative h-[430px] w-full min-w-0 flex-1 min-[521px]:h-[480px] min-[981px]:h-[540px]"
+  class={`relative w-full min-w-0 flex-none min-[981px]:h-[540px] min-[981px]:flex-1 ${stackHeight}`}
   data-reveal
 >
   <div
