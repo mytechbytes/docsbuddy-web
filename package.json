@@ -11,13 +11,15 @@
     "preview": "npm run build && wrangler dev",
     "astro": "astro",
     "generate-types": "wrangler types",
-    "deploy": "npm run build && wrangler deploy"
+    "deploy": "npm run build && wrangler deploy",
+    "icons": "node brand/generate.mjs && cp brand/web/* public/ && cp brand/web/favicon.svg public/logo.svg"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^13.7.0",
     "astro": "^6.4.8"
   },
   "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/vite": "^4.3.1",
     "tailwindcss": "^4.3.1",
     "vite": "^8.0.16",

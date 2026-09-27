@@ -28,14 +28,15 @@
   },
 
   "nav": [
+    { "label": "About", "href": "/#about" },
     { "label": "Features", "href": "/#features" },
     { "label": "How it works", "href": "/#how" },
-    { "label": "Privacy", "href": "/privacy.html" },
+    { "label": "Privacy", "href": "/privacy" },
     { "label": "Contact", "href": "/#contact" }
   ],
   "footerLinks": [
-    { "label": "Privacy Policy", "href": "/privacy.html" },
-    { "label": "Terms", "href": "/terms.html" },
+    { "label": "Privacy Policy", "href": "/privacy" },
+    { "label": "Terms", "href": "/terms" },
     { "label": "Contact", "href": "mailto:support@docsbuddy.mytechbytes.in" }
   ]
 }

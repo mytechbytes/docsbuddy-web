@@ -6,10 +6,10 @@ import LegalLayout from "../layouts/LegalLayout.astro";
   title="Privacy Policy — DocsBuddy"
   description="How DocsBuddy collects, uses, stores and protects your personal information."
   heading="Privacy Policy"
-  updated="Last updated: 21 June 2026"
+  updated="Last updated: 27 September 2026"
 >
   <p>
-    This Privacy Policy explains how <strong>DocsBuddy</strong> ("we", "us", the "app") collects,
+    This Privacy Policy explains how <strong>DocsBuddy</strong>, an app operated by MyTechBytes ("we", "us", the "app"), collects,
     uses, stores and protects your information when you use our mobile application and website at <a
       href="https://docsbuddy.mytechbytes.in">docsbuddy.mytechbytes.in</a
     >. By using DocsBuddy you agree to the practices described here.
@@ -25,7 +25,7 @@ import LegalLayout from "../layouts/LegalLayout.astro";
   <ul>
     <li>
       <strong>Account information</strong> — your name and email address, used to create and secure your
-      account.
+      account. If you sign in with Google, we receive these from your Google account (see section 4).
     </li>
     <li>
       <strong>Asset &amp; reminder data</strong> — the assets you add (vehicles, appliances, electronics,
@@ -82,7 +82,60 @@ import LegalLayout from "../layouts/LegalLayout.astro";
     share only what is necessary for them to perform these functions.
   </p>
 
-  <h2>4. Legal basis &amp; consent</h2>
+  <h2>4. Google user data</h2>
+  <p>
+    DocsBuddy offers <strong>Sign in with Google</strong> as an optional way to create and access
+    your account. This section explains exactly what Google user data we access and what we do with
+    it.
+  </p>
+  <p><strong>Data we access.</strong> When you choose Sign in with Google, we request only these scopes:</p>
+  <ul>
+    <li><code>openid</code>: a unique Google account identifier, used to recognise you when you sign in.</li>
+    <li><code>email</code>: your Google account email address.</li>
+    <li><code>profile</code>: your name and profile picture.</li>
+  </ul>
+  <p>
+    We do <strong>not</strong> request access to Gmail, Google Drive, Google Contacts, Google
+    Calendar, or any other Google service or data.
+  </p>
+  <p><strong>How we use it.</strong> We use this data only to:</p>
+  <ul>
+    <li>create your DocsBuddy account and sign you in securely;</li>
+    <li>show your name and picture in the app and to family members you choose to invite;</li>
+    <li>send account and reminder emails to your email address, according to your settings.</li>
+  </ul>
+  <p>
+    <strong>How we store and protect it.</strong> Your Google account identifier, name, email address
+    and profile picture URL are stored in your DocsBuddy account record with our authentication
+    provider, Supabase, over encrypted HTTPS/TLS connections and with access restricted to your own
+    account. We do not store your Google password, and we never see it.
+  </p>
+  <p>
+    <strong>Sharing.</strong> We do not sell Google user data. We do not share it with third parties,
+    except with Supabase to operate sign-in, with family members you invite (name and picture
+    only), or where required by law. We do not use Google user data for advertising, and we do not
+    use it to develop, improve or train generalised AI or machine-learning models.
+  </p>
+  <p>
+    <strong>Retention and deletion.</strong> We keep this data while your account is active. You can
+    delete your account from the app's settings, or by emailing
+    <a href="mailto:support@docsbuddy.mytechbytes.in">support@docsbuddy.mytechbytes.in</a>. When you
+    do, your Google-derived account data is deleted within 30 days. You can also remove DocsBuddy's
+    access to your Google account at any time from
+    <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener"
+      >myaccount.google.com/permissions</a
+    >.
+  </p>
+  <div class="note">
+    DocsBuddy's use and transfer of information received from Google APIs to any other app will
+    adhere to the <a
+      href="https://developers.google.com/terms/api-services-user-data-policy"
+      target="_blank"
+      rel="noopener">Google API Services User Data Policy</a
+    >, including the Limited Use requirements.
+  </div>
+
+  <h2>5. Legal basis &amp; consent</h2>
   <p>
     We process your information to perform our contract with you (providing the app), with your
     consent (e.g. notification channels and document uploads), and to pursue our legitimate interest
@@ -90,7 +143,7 @@ import LegalLayout from "../layouts/LegalLayout.astro";
     settings or deleting your account.
   </p>
 
-  <h2>5. Data sharing</h2>
+  <h2>6. Data sharing</h2>
   <p>
     We do <strong>not</strong> sell your personal information. We do not share it with advertisers. Data
     is shared only: (a) with the service providers listed above; (b) with the family members you choose
@@ -98,7 +151,7 @@ import LegalLayout from "../layouts/LegalLayout.astro";
     rights and users.
   </p>
 
-  <h2>6. Data retention</h2>
+  <h2>7. Data retention</h2>
   <p>
     We keep your information for as long as your account is active. When you delete an asset or
     document it is removed from active storage, and when you delete your account your personal data
@@ -106,7 +159,7 @@ import LegalLayout from "../layouts/LegalLayout.astro";
     legal obligations.
   </p>
 
-  <h2>7. Security</h2>
+  <h2>8. Security</h2>
   <p>
     Your data is transmitted over encrypted connections (HTTPS/TLS) and stored by our providers with
     access controls and row-level security so that only you and your family can read your records.
@@ -115,7 +168,7 @@ import LegalLayout from "../layouts/LegalLayout.astro";
     safeguards.
   </p>
 
-  <h2>8. Your rights</h2>
+  <h2>9. Your rights</h2>
   <ul>
     <li><strong>Access &amp; portability</strong> — request a copy of the data we hold about you.</li>
     <li><strong>Correction</strong> — update inaccurate information directly in the app.</li>
@@ -127,27 +180,27 @@ import LegalLayout from "../layouts/LegalLayout.astro";
   </ul>
   <p>To exercise any of these rights, contact us at the address below.</p>
 
-  <h2>9. Children's privacy</h2>
+  <h2>10. Children's privacy</h2>
   <p>
     DocsBuddy is not directed to children under 13 (or the minimum age in your jurisdiction). We do
     not knowingly collect personal information from children. If you believe a child has provided us
     data, contact us and we will delete it.
   </p>
 
-  <h2>10. International transfers</h2>
+  <h2>11. International transfers</h2>
   <p>
     Your information may be processed on servers located outside your country of residence. Where
     this happens, we rely on our providers' safeguards to protect your data in line with applicable
     law.
   </p>
 
-  <h2>11. Changes to this policy</h2>
+  <h2>12. Changes to this policy</h2>
   <p>
     We may update this Privacy Policy from time to time. Material changes will be reflected by the
     "Last updated" date above and, where appropriate, communicated in the app.
   </p>
 
-  <h2>12. Contact us</h2>
+  <h2>13. Contact us</h2>
   <p>
     Questions about this policy or your data? Email us at <a
       href="mailto:support@docsbuddy.mytechbytes.in">support@docsbuddy.mytechbytes.in</a

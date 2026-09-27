@@ -12,10 +12,10 @@ const { href = "/", class: className = "" } = Astro.props;
   class={`inline-flex items-center gap-2 font-extrabold tracking-[-.01em] ${className}`}
 >
   <img
-    src="/logo.png"
-    alt=""
-    width="432"
-    height="432"
+    src="/logo.svg"
+    alt={`${site.name} logo`}
+    width="120"
+    height="120"
     class="h-[1.5em] w-auto shrink-0 select-none"
   />
   <span>{site.wordmark.head}<span class="text-muted">{site.wordmark.tail}</span></span>

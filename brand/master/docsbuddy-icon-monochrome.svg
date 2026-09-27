@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<defs><mask id="m" maskUnits="userSpaceOnUse" x="-50" y="-50" width="220" height="220">
+  <g transform="translate(-4 -3.5)">
+    <path d="M28 22a4 4 0 0 1 4-4H64L80 34V92a4 4 0 0 1-4 4H32a4 4 0 0 1-4-4Z" fill="#fff"/>
+    <circle cx="45" cy="54" r="4.5" fill="#000"/>
+    <circle cx="63" cy="54" r="4.5" fill="#000"/>
+    <path d="M43 67Q54 77 65 67" fill="none" stroke="#000" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="82" cy="90" r="21" fill="#000"/>
+    <circle cx="82" cy="90" r="17" fill="#fff"/>
+    <path d="M82 77.5a6.5 6.5 0 0 1 6.5 6.5v5l3.3 3.7a1.5 1.5 0 0 1-1.1 2.5H73.3a1.5 1.5 0 0 1-1.1-2.5L75.5 89v-5a6.5 6.5 0 0 1 6.5-6.5Z" fill="#000"/>
+    <circle cx="82" cy="98.6" r="2.4" fill="#000"/>
+  </g>
+</mask></defs>
+<rect x="-50" y="-50" width="220" height="220" fill="#000" mask="url(#m)"/></svg>

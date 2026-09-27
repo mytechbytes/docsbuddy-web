@@ -27,7 +27,7 @@ const secHeadH2 = "text-[40px] font-extrabold leading-[1.1] tracking-[-.025em] t
       <div
         class="flex flex-col items-start gap-8 py-[52px] min-[981px]:flex-row min-[981px]:items-center min-[981px]:pb-20 min-[981px]:pt-[72px]"
       >
-        <div class="relative z-[3] w-full min-[981px]:flex-[0_0_470px]" data-reveal>
+        <div class="relative z-[3] w-full min-[981px]:flex-[0_0_470px]">
           <div class="mb-[18px] text-[13px] font-bold uppercase tracking-[.18em] text-teal">
             Warranties · Insurance · Bills
           </div>
@@ -80,6 +80,38 @@ const secHeadH2 = "text-[40px] font-extrabold leading-[1.1] tracking-[-.025em] t
             class={`absolute left-[38%] top-3 w-[228px] rotate-[4deg] ${phoneShadow} min-[521px]:left-[40%] min-[521px]:w-[290px] min-[981px]:left-[290px]`}
           />
         </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ABOUT — plain-language purpose + Google data disclosure (OAuth verification). */}
+  <section id="about" class="border-y border-line bg-paper py-20">
+    <div class="mx-auto max-w-[860px] px-6">
+      <div class="mb-3 text-[13px] font-bold uppercase tracking-[.18em] text-teal">About the app</div>
+      <h2 class={secHeadH2}>What is DocsBuddy?</h2>
+      <p class="mt-5 text-[18px] leading-[1.65] text-ink-2">
+        DocsBuddy is a free mobile app for Android and iOS, made by MyTechBytes, that helps
+        households keep track of the things they own. You add your vehicles, appliances and
+        electronics, attach their invoices, warranty cards and insurance policies, and record the
+        dates that matter: insurance renewal, warranty expiry, pollution certificate, AMC,
+        registration and road tax. DocsBuddy then reminds you and your family members before
+        each date comes up, by push notification, email or WhatsApp.
+      </p>
+      <p class="mt-4 text-[18px] leading-[1.65] text-ink-2">
+        No account is needed to read this website. To use the app you create a DocsBuddy account,
+        either with your email address or with <strong class="text-ink">Sign in with Google</strong>.
+      </p>
+      <div class="mt-8 rounded-2xl border border-line bg-bg p-6">
+        <h3 class="text-[18px] font-bold text-ink">How DocsBuddy uses your Google account</h3>
+        <p class="mt-2 text-[16px] leading-[1.65] text-ink-2">
+          If you choose Sign in with Google, DocsBuddy asks only for your basic profile: your
+          name, email address and profile picture. We use them only to create your DocsBuddy
+          account, sign you in and show your name in the app and to family members you invite.
+          DocsBuddy does not read your Gmail, Google Drive, Contacts or any other Google data.
+          We never sell this information or use it for advertising. You can delete your account
+          from inside the app at any time. Full details are in our
+          <a href="/privacy" class="font-semibold text-teal underline">Privacy Policy</a>.
+        </p>
       </div>
     </div>
   </section>

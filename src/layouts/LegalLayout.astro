@@ -41,8 +41,8 @@ const { title, description, heading, updated, eyebrow = "Legal" } = Astro.props;
       <span>© {site.copyrightYear} {site.name}</span>
       <span>
         <a href="/" class="hover:text-ink-2">Home</a> ·
-        <a href="/privacy.html" class="hover:text-ink-2">Privacy</a> ·
-        <a href="/terms.html" class="hover:text-ink-2">Terms</a> ·
+        <a href="/privacy" class="hover:text-ink-2">Privacy</a> ·
+        <a href="/terms" class="hover:text-ink-2">Terms</a> ·
         <a href={`mailto:${site.supportEmail}`} class="hover:text-ink-2">Contact</a>
       </span>
     </div>
@@ -82,6 +82,13 @@ const { title, description, heading, updated, eyebrow = "Legal" } = Astro.props;
   }
   .legal-doc a {
     color: var(--teal);
+  }
+  .legal-doc code {
+    font-size: 14px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1px 6px;
   }
   .legal-doc .note {
     background: var(--bg);
