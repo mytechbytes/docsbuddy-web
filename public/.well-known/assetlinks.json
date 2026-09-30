@@ -1,11 +1,14 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "in.mytechbytes.docsbuddy",
       "sha256_cert_fingerprints": [
-        "<<REPLACE: SHA-256 of the GOOGLE PLAY APP-SIGNING key, colon-separated hex>>"
+        "\u003c\u003cREPLACE: SHA-256 of the GOOGLE PLAY APP-SIGNING key, colon-separated hex\u003e\u003e",
+        "1B:F7:4D:CD:A6:58:5C:9E:C9:22:89:8A:0B:3C:54:98:A9:22:59:4F:2E:42:25:8B:8F:30:5B:B1:95:26:AA:78"
       ]
     }
   }
