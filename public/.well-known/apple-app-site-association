@@ -1,11 +1,8 @@
 {
   "applinks": {
-    "apps": [],
-    "details": [
-      {
-        "appID": "<<REPLACE: APPLE_TEAM_ID>>.in.mytechbytes.docsbuddy",
-        "paths": ["/login-callback", "/login-callback/*"]
-      }
-    ]
+    "details": [{
+      "appIDs": ["PAB3TLAUZH.in.mytechbytes.docsbuddy"],
+      "components": [{ "/": "/login-callback*" }]
+    }]
   }
 }
